@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Public external storage - Pictures directory -->
+    <external-path name="external_pictures" path="Pictures" />
+    <external-path name="external_pictures_orai" path="Pictures/Orai" />
+    
+    <!-- Public external storage - Movies directory -->
+    <external-path name="external_movies" path="Movies" />
+    <external-path name="external_movies_orai" path="Movies/Orai" />
+    
+    <!-- App-specific external files directory - Pictures -->
+    <external-files-path name="external_files_pictures" path="Pictures" />
+    <external-files-path name="external_files_pictures_orai" path="Pictures/Orai" />
+    
+    <!-- App-specific external files directory - Movies -->
+    <external-files-path name="external_files_movies" path="Movies" />
+    <external-files-path name="external_files_movies_orai" path="Movies/Orai" />
+    
+    <!-- Root paths for broader coverage (fallback) -->
+    <external-path name="external_root" path="." />
+    <external-files-path name="external_files_root" path="." />
+    
+    <!-- Internal app files directory -->
+    <files-path name="internal_files" path="." />
+    
+    <!-- Cache directory -->
+    <cache-path name="cache" path="." />
+</paths>
+
+

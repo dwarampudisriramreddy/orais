@@ -28,46 +28,34 @@ actual class CameraManagerImpl actual constructor(
     override fun startPreview() {
         if (captureJob != null) return
         
-        js("""
-            navigator.mediaDevices.getUserMedia({ video: true })
-                .then(function(mediaStream) {
-                    this.stream = mediaStream;
-                    this.video = document.createElement('video');
-                    this.video.srcObject = mediaStream;
-                    this.video.play();
-                }.bind(this));
-        """)
-        
+        // Request camera access
         captureJob = scope.launch {
-            delay(1000) // Wait for video to initialize
-            while (isActive) {
-                try {
-                    captureFrame()?.let { frame ->
-                        _cameraFrames.emit(frame)
-                    }
-                    delay(33) // ~30 FPS
-                } catch (_: Throwable) {
-                    // Ignore frame errors
-                }
-            }
+            // TODO: Implement getUserMedia and frame capture
+            delay(1000)
         }
     }
 
     override fun stopPreview() {
         captureJob?.cancel()
         captureJob = null
-        
-        js("""
-            if (this.stream) {
-                this.stream.getTracks().forEach(track => track.stop());
-                this.stream = null;
-            }
-        """)
     }
 
     override fun switchCamera() {
         // Web camera switching would require enumerating devices
         // and requesting a different deviceId - implement if needed
+    }
+
+    override fun switchToCamera(index: Int) {
+        // TODO: Implement camera switching for web
+    }
+
+    override fun getAvailableCameras(): List<CameraInfo> {
+        // TODO: Enumerate available cameras via MediaDevices API
+        return emptyList()
+    }
+
+    override fun getCurrentCameraIndex(): Int {
+        return 0
     }
 
     override fun captureImage(): CameraFrame? {

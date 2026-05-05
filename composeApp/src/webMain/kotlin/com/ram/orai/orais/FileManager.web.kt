@@ -3,26 +3,17 @@ package com.ram.orai.orais
 actual class FileManager {
     actual fun saveImage(imageData: ImageData, filename: String): Boolean {
         // Web: Use IndexedDB or download to user's filesystem
-        return try {
-            // Trigger download
-            js("""
-                const blob = new Blob([imageData.bytes], { type: 'image/jpeg' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = filename;
-                a.click();
-                URL.revokeObjectURL(url);
-            """)
-            true
-        } catch (e: Throwable) {
-            false
-        }
+        // TODO: Implement file download using File System Access API
+        return false
     }
     
-    actual fun saveVideo(videoPath: String, filename: String): Boolean {
+    actual fun saveVideo(videoPath: String, filename: String): VideoSaveResult {
         // Web: Similar download approach
-        return false
+        return VideoSaveResult(
+            success = false,
+            errorMessage = "Video saving not implemented for web platform",
+            errorDetails = listOf("❌ Video saving is not available on web platform")
+        )
     }
     
     actual fun listFiles(directory: String): List<FileInfo> {
