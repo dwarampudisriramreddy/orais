@@ -1,0 +1,7 @@
+Normal
+Initial Caries
+Moderate Caries
+Severe Caries
+Tooth Stain
+Dental Calculus
+Other Lesions
