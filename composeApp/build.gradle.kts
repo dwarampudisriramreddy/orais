@@ -230,7 +230,7 @@ compose.desktop {
 
         nativeDistributions {
 
-            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Msix, TargetFormat.Deb)
 
             packageName = "com.ram.orai.orais"
 
